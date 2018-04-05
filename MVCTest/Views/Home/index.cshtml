@@ -1,0 +1,353 @@
+﻿
+@{
+    ViewData["Title"] = "index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мир jQuery</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <script src="~/lib/jquery/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+</head>
+<body>
+
+    <header>
+        <button id="up">Стрелочка</button>
+        <div class="menu">
+            <div class="list">
+                <button id="1" class="menu_button" data-scroll-to="first">Home</button>
+                <button id="2" class="menu_button" data-scroll-to="second">Gallery</button>
+                <button id="3" class="menu_button" data-scroll-to="third">Our team</button>
+                <button id="4" class="menu_button" data-scroll-to="fourth">About us</button>
+                <button id="5" class="menu_button" data-scroll-to="another">Contacts</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="background"></div>
+    <div id="first">
+        <h1>Home</h1>
+        <button class="show_text">Показать текст</button>
+        <p>Одним из важных функциональностей jQuery является выборка элементов. Чтобы что-то делать с элементами, манипулировать ими, применять к ним методы jQuery, нам надо сначала их получить.</p>
+    </div>
+    <div id="second">
+        <h1>Gallery</h1>
+        <div id="pictures">
+        </div>
+    </div>
+
+    <div id="third">
+        <h1>Our team</h1>
+        <div class="person">
+            <img src="~/images/p1.jpg" />
+            <h1>Emma Robinson</h1>
+            <p>It’s a well-known fact that travelling plays a significant role in a modern life. Today in the 21 century it’s rather easy to travel to any point of our planet. If 50 years ago people even didn’t dream about spending a weekend in Paris or London, now it’s not a dream, it’s a reality. There are so many opportunities to travel. And I can say that it’s not very expensive to fly even by plane. You can choose ryanair airlines, for examples. They have cheap tickets.</p>
+        </div>
+    </div>
+
+    <div id="fourth">
+        <h1>About us</h1>
+        <button class="show_text">Показать текст</button>
+        <p>Одним из важных функциональностей jQuery является выборка элементов. Чтобы что-то делать с элементами, манипулировать ими, применять к ним методы jQuery, нам надо сначала их получить.</p>
+    </div>
+
+    <div id="another">
+        <h1>Contacts</h1>
+        <button class="show_text">Показать текст</button>
+        <p>Одним из важных функциональностей jQuery является выборка элементов. Чтобы что-то делать с элементами, манипулировать ими, применять к ним методы jQuery, нам надо сначала их получить.</p>
+    </div>
+
+    <div class="selectPicture">
+        <img>
+        <div class="control">
+            <button id="previous">◄</button>
+            <button id="play">play</button>
+            <button id="stop">stop</button>
+            <button id="next">►</button>
+        </div>
+        <div class="control2">
+            <button id="close">×</button>
+            <button id="hide">Hide</button>
+            <button id="like">❤</button>
+        </div>
+
+        <div class="buttonBackground"></div>
+        <div class="comments">
+            <div class="commentsList">
+                @*<div class="comment">
+                        <button class="deleteComment">×</button>
+                        <h4>username</h4>
+                        <h5>date-time</h5>
+                        <p>Your comment pam pam pam</p>
+                    </div>*@
+            </div>
+            <div class="addComment">
+                <textarea placeholder="Your comment here..."></textarea>
+                <button id="send">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadImage">
+        @using (Html.BeginForm("LoadImage", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+        <input type="file" name="uploadedFile" accept="image/*" /><br>
+        <input type="submit" value="Загрузить" />
+        }
+    </div>
+
+
+    <footer>
+        <p>Anastasia Vikhlyaeva, 2018</p>
+    </footer>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            var templateImage = '<div class="picture" ><img src="/images/<%url%>" data-image-open="<%id%>" id="openImage"><p class="text_pic"><%text%></p></div>';
+
+            var images = [];
+
+            $.getJSON('/Images/', function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    images.push({ id: data[i].id, url: data[i].url });
+                    var newImage = templateImage.replace('<%url%>', data[i].url);
+                    newImage = newImage.replace('<%id%>', i);
+                    newImage = newImage.replace('<%text%>', data[i].text);
+                    $('#pictures').prepend(newImage);
+                }
+                $('#pictures').prepend('<div class="newPicture" id="newImage"><img src="/images/photo3.png" data-image-open="<%id%>" id="openImage"></div>');
+            });
+
+            $('.menu_button').click(function () {
+                $(".menu_button").removeClass("active");
+                $(this).addClass("active");
+                let scrollTo = $(this).data('scroll-to');
+                $('html').animate({ scrollTop: $('#' + scrollTo).offset().top - 50 }, 900, function () { });
+            });
+
+            $(".show_text").click(function () {
+                $("p", '#first').fadeIn(600);
+                $('.menu_button:even').css('background-color', 'yellow');
+            });
+
+            $(window).scroll(function () {
+                $("#up").fadeIn(600);
+            });
+
+            $('#up').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 500, function () {
+                    $("#up").hide();
+                });
+            });
+
+            $('body').on('mouseenter', '.picture', function () {
+                $('img', this).addClass("imgOpacity");
+                $(".text_pic", this).show();
+            });
+
+            $('body').on('mouseleave', '.picture', function () {
+                $('img', this).removeClass('imgOpacity');
+                $('.text_pic', this).hide();
+            });
+
+            $('body').on('mouseenter', '.newPicture', function () {
+                $('img', this).addClass("imgOpacity");
+            });
+
+            $('body').on('mouseleave', '.newPicture', function () {
+                $('img', this).removeClass('imgOpacity');
+            });
+
+            $('body').on('click', '.picture', function () {
+                $('img', '.selectPicture').remove();
+
+                var imageId = $('img', this).data('image-open');
+                showImage(imageId);
+                $('.background').show();
+                $('#stop').hide();
+            });
+
+            $('body').on('click', '#next', function () {
+                var imageId = $('img', '.selectPicture').data('image-open');
+                if (imageId === images.length - 1) {
+                    imageId = 0;
+                }
+                else {
+                    imageId++;
+                }
+                showImage(imageId);
+                likeInactive();
+            });
+
+            $('body').on('click', '#hide', function () {
+                var imageId = $('img', '.selectPicture').data('image-open');
+                var imageIdDb = images[imageId].id;
+                $.getJSON('/Images/hideimage', { imageId: imageIdDb }, function (data) {
+                });
+                clearInterval(slider);
+                $('.background').hide();
+                $('.selectPicture').hide();
+                $('#stop').hide();
+                $('#play').show();
+                location.reload(true);
+            });
+
+            $('body').on('click', '#send', function () {
+                var imageId = $('img', '.selectPicture').data('image-open');
+                var imageIdDb = images[imageId].id;
+                var userId = 2;
+
+                var text = $('textarea', '.addComment').val();
+                if (text != '') {
+                    $.getJSON('/Comment/addcomment', { imageId: imageIdDb, commentText: text }, function (data) {
+                        var templateComment = '<div class="comment"><h4><%userName%></h4><h5><%date%></h5><button class="deleteComment">×</button><p><%text%></p></div>';
+                        var newComment = templateComment.replace('<%userName%>', data.username);
+                        newComment = newComment.replace('<%date%>', data.createDate);
+                        newComment = newComment.replace('<%text%>', data.textMessage);
+                        $('.commentsList').append(newComment);
+                        $('textarea', '.addComment').val('');
+                        $('.commentsList').scrollTop = $('.commentsList').scrollHeight;
+                    });
+                }
+            });
+
+            $('body').on('click', '#comment', function () {
+                $('.comments').show();
+            });
+
+            $('body').on('click', '#like', function () {
+                var imageId = $('img', '.selectPicture').data('image-open');
+                var imageIdDb = images[imageId].id;
+                if ($('#like').hasClass('active') === false) {
+                    $.getJSON('/Images/likeimage', { imageId: imageIdDb }, function (data) {
+                        $('#like').addClass('active');
+                        $('#like').text(data + ' ❤');
+                    });
+                }
+                else {
+                    $.getJSON('/Images/dislikeimage', { imageId: imageIdDb }, function (data) {
+                        $('#like').removeClass('active');
+                        $('#like').text(data + ' ❤');
+                    });
+                }
+            });
+
+            $('body').on('click', '#previous', function () {
+                var imageId = $('img', '.selectPicture').data('image-open');
+                if (imageId === 0) {
+                    imageId = images.length - 1;
+                }
+                else {
+                    imageId--;
+                }
+                showImage(imageId);
+                likeInactive();
+            });
+
+            $('#close').click(function () {
+                clearInterval(slider);
+                $('.background').hide();
+                $('.selectPicture').hide();
+                $('#stop').hide();
+                $('#play').show();
+            });
+
+            var slider;
+
+            $('#play').click(function () {
+                $(this).hide();
+                $('#stop').show();
+                slider = setInterval(function () {
+                    var imageId = $('img', '.selectPicture').data('image-open');
+                    if (imageId === images.length - 1) {
+                        imageId = 0;
+                    }
+                    else {
+                        imageId++;
+                    }
+                    showImage(imageId);
+                    likeInactive();
+                }, 3000);
+            });
+
+            $('#stop').click(function () {
+                $(this).hide();
+                $('#play').show();
+                clearInterval(slider);
+            });
+
+            $('body').on('click', '.deleteComment', function () {
+                var commentId = $(this).closest('.comment').data('comment-id');
+                $.getJSON('/comment/deletecomment', { commentId: commentId }, function () {
+
+                });
+                $(this).closest('.comment').remove();
+
+            });
+
+            $('body').on('click', '.reply', function () {
+                var userName = $(this).closest('.comment').data('user-name');
+                $('textarea', '.addComment').val('<b>' + userName + ', ' + '</b>');
+                $('textarea', '.addComment').focus();
+            });
+
+            $('body').on('click', '#newImage', function () {
+                $('.loadImage').show();
+            });
+
+            function likeInactive() {
+                $('#like').removeClass('active');
+                $('#like').text('❤');
+            }
+
+            function showImage(imageId) {
+                $('img', '.selectPicture').remove();
+                var imageIdDb = images[imageId].id;
+                $('.selectPicture').append('<img src="/images/' + images[imageId].url + '" data-image-open="' + imageId + '">');
+                $.getJSON('/Images/likeshow', { imageId: imageIdDb }, function (data) {
+                    $('#like').text(data + ' ❤');
+                });
+                $.getJSON('/Images/likeornot', { imageId: imageIdDb }, function (data) {
+                    if (data === 0) {
+                        $('#like').removeClass('active');
+                    }
+                    else {
+                        $('#like').addClass('active');
+                    }
+                });
+                $('.selectPicture').fadeIn(200);
+                showComments(imageIdDb);
+                $('textarea', '.addComment').val('');
+            }
+
+            function showComments(imageIdDb) {
+                var templateComment = '<div class="comment" data-comment-id="<%commentId%>" data-user-id="<%userId%>" data-user-name="<%userName%>"><h4><%userName%></h4><h5><%date%></h5><button class="deleteComment">×</button><button class="reply"><i class="fas fa-reply"></i></button><p><%text%></p></div>';
+                var comments = [];
+                $.getJSON('/comment/showcomment', { imageId: imageIdDb }, function (data) {
+                    $('.commentsList').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        comments.push({ id: data[i].id, url: data[i].url });
+                        var newComment = templateComment.replace('<%userName%>', data[i].username);
+                        newComment = newComment.replace('<%userName%>', data[i].username);
+                        newComment = newComment.replace('<%date%>', data[i].createDate);
+                        newComment = newComment.replace('<%text%>', data[i].textMessage);
+                        newComment = newComment.replace('<%commentId%>', data[i].commentId);
+                        newComment = newComment.replace('<%userId%>', data[i].userid);
+                        $('.commentsList').append(newComment);
+                        if ($('.comment').last().data('user-id') !== 2) {
+                            $('.deleteComment', '.comment').last().remove();
+                        }
+                        else {
+                            $('.reply', '.comment').last().remove();
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

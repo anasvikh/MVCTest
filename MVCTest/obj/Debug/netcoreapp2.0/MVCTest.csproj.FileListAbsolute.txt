@@ -1,0 +1,11 @@
+C:\work\learning\MVCTest\MVCTest\bin\Debug\netcoreapp2.0\MVCTest.deps.json
+C:\work\learning\MVCTest\MVCTest\bin\Debug\netcoreapp2.0\MVCTest.runtimeconfig.json
+C:\work\learning\MVCTest\MVCTest\bin\Debug\netcoreapp2.0\MVCTest.runtimeconfig.dev.json
+C:\work\learning\MVCTest\MVCTest\bin\Debug\netcoreapp2.0\MVCTest.dll
+C:\work\learning\MVCTest\MVCTest\obj\Debug\netcoreapp2.0\MVCTest.csproj.CoreCompileInputs.cache
+C:\work\learning\MVCTest\MVCTest\obj\Debug\netcoreapp2.0\MVCTest.AssemblyInfoInputs.cache
+C:\work\learning\MVCTest\MVCTest\obj\Debug\netcoreapp2.0\MVCTest.AssemblyInfo.cs
+C:\work\learning\MVCTest\MVCTest\bin\Debug\netcoreapp2.0\MVCTest.pdb
+C:\work\learning\MVCTest\MVCTest\obj\Debug\netcoreapp2.0\MVCTest.dll
+C:\work\learning\MVCTest\MVCTest\obj\Debug\netcoreapp2.0\MVCTest.pdb
+C:\work\learning\MVCTest\MVCTest\obj\Debug\netcoreapp2.0\MVCTest.csprojResolveAssemblyReference.cache

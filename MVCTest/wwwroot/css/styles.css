@@ -1,0 +1,471 @@
+﻿html {
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+}
+
+body {
+    background-color: #e5e5e5;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    margin-left: 50px;
+}
+
+.menu {
+    background-color: darkred;
+    min-height: 0px;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    padding: 0px;
+    z-index: 1000;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 700px;
+    min-height: 0px;
+}
+
+    .list button.active {
+        background-color: salmon;
+        border: 2px solid wheat;
+    }
+
+    .list button:hover {
+        background-color: lightcoral;
+        border: 2px solid lightcoral;
+        color: white;
+    }
+
+    .list button {
+        display: inline-block;
+        background-color: crimson;
+        width: 100px;
+        padding: 6px 10px;
+        margin: 10px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 16px;
+        border: 2px solid crimson;
+        color: white;
+    }
+
+body > div {
+    padding: 20px 50px;
+    min-height: 300px;
+}
+
+#first {
+    background-color: beige;
+    margin-top: 50px;
+}
+
+    #first p {
+        width: 300px;
+        text-align: justify;
+        display: none;
+    }
+
+#second {
+    background-color: antiquewhite;
+}
+
+
+    #second img {
+        width: 300px;
+        height: 250px;
+        border: 15px solid white;
+        box-shadow: 0 0 20px black;
+        margin: 0;
+        padding: 0;
+    }
+
+.picture {
+    position: relative;
+    min-height: 0;
+    width: 330px;
+    margin: 0;
+    display: inline-block;
+    padding: 20px 40px;
+    min-height: 300px;
+}
+
+.newPicture {
+    position: relative;
+    min-height: 0;
+    width: 330px;
+    margin: 0;
+    display: inline-block;
+    padding: 20px 40px;
+    min-height: 300px;
+}
+
+#newImage  img {
+    width: 100px;
+    height: 100px;
+    padding: 75px 100px;
+}
+
+.imgOpacity {
+    opacity: 0.3;
+}
+
+#second p {
+    width: 250px;
+    position: absolute;
+    top: 30px;
+    left: 90px;
+    text-align: center;
+    font-size: 26px;
+    display: none;
+    cursor: default;
+}
+
+.selectPicture {
+    padding: 0;
+    position: fixed;
+    width: 800px;
+    height: 550px;
+    top: 80px;
+    background-color: lavenderblush;
+    z-index: 1000;
+    box-shadow: 0 0 1000px black;
+    display: none;
+    margin: 0 auto;
+    left: 50%;
+    margin-left: -538px;
+}
+
+.loadImage {
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    z-index: 5000;
+    display: none;
+}
+
+.comments {
+    padding-top: 10px;
+    position: absolute;
+    width: 265px;
+    height: 540px;
+    --top: 80px;
+    background-color: grey;
+    z-index: 1000;
+    box-shadow: 0 0 100px black;
+    --display: none;
+    margin: 0 auto;
+    left: 810px;
+}
+
+.commentsList {
+    overflow: auto;
+    height: 400px;
+}
+
+.comment {
+    background-color: floralwhite;
+    --border: 2px solid lightgrey;
+    border-bottom: 4px solid lightgrey;
+    width: 210px;
+    margin: 10px;
+    padding: 10px;
+    padding-bottom: 0;
+    position: relative;
+}
+
+.comment h4{
+    margin: 0px;
+    font-size: 16px;
+}
+
+    .comment h5 {
+        margin: 0px;
+        font-size: 12px;
+        color: gray;
+    }
+
+.comment p{
+    width: 200px;
+    margin: 10px 0;
+    word-wrap: break-word;
+}
+
+.addComment {
+    position: absolute;
+    bottom: 0px;
+}
+
+    .addComment textarea {
+        width: 220px;
+        margin: 10px;
+        margin-bottom: 0px;
+        height: 60px;
+        font-family: Arial;
+        font-size: 14px;
+        padding: 10px;
+        outline: none;
+        resize: none;
+        border: 4px solid lightgrey;
+        --border-bottom: 8px solid lightgrey;
+    }
+
+    button.deleteComment {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: transparent;
+        font-size: 30px;
+        border: none;
+    }
+
+    button.reply {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: transparent;
+        font-size: 20px;
+        border: none;
+    }
+
+#send {
+    display: block;
+    margin-left: 180px;
+    width: auto;
+    background-color: transparent;
+    font-size: 30px;
+    border: none;
+    z-index: 500;
+}
+
+    .selectPicture:hover .control {
+        display: block;
+    }
+
+    .selectPicture:hover .control button {
+        display: inline-block;
+    }
+
+    .selectPicture:hover .control2 {
+        display: block;
+    }
+
+    .selectPicture:hover .control2 button {
+        display: block;
+    }
+
+    .selectPicture:hover .buttonBackground {
+        display: block;
+    }
+
+
+    .selectPicture img {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        top: 10px;
+        left: 20%;
+    }
+
+    .selectPicture .control button {
+        width: auto;
+        background-color: transparent;
+        font-size: 30px;
+        border: none;
+        z-index: 500;
+        display: none;
+    }
+
+.selectPicture .control2 button {
+    width: auto;
+    background-color: transparent;
+    font-size: 30px;
+    border: none;
+    z-index: 500;
+    display: none;
+}
+
+    .buttonBackground {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 80px;
+        background-color: blanchedalmond;
+        opacity: 0.4;
+        display: none;
+    }
+
+#play, #stop {
+    width: 80px;
+}
+
+#close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    font-size: 54px;
+    z-index: 4000;
+}
+
+#hide {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+}
+
+#like {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: auto;
+    height: auto;
+}
+
+#like.active {
+    color: red;
+}
+
+#comment {
+    position: absolute;
+    top: 140px;
+    right: 0;
+    width: auto;
+    height: auto;
+}
+
+.background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 50;
+    display: none;
+}
+
+
+.show_text {
+    padding: 10px;
+    background-color: oldlace;
+    border: 5px solid darksalmon;
+    border-radius: 5px;
+}
+
+
+#up {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: none;
+    z-index: 900;
+    padding: 10px;
+    background-color: oldlace;
+    border: 5px solid darksalmon;
+    border-radius: 5px;
+}
+
+/*form {
+    background-color: darksalmon;
+    width: 210px;
+    height: 200px;
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: -10;
+}*/
+
+input {
+    margin: 2px 0;
+}
+
+div.form {
+    min-height: 0px;
+    padding: 10px;
+}
+
+footer {
+    background-color: darkred;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+}
+
+.control {
+    width: 300px;
+    position: absolute;
+    bottom: 0px;
+    margin: 0 auto;
+    left: 50%;
+    margin-left: -100px;
+    display: none;
+}
+
+    .control button {
+        display: inline-block;
+    }
+
+#third {
+    background-color: bisque;
+}
+
+.person {
+    width: 300px;
+    background-color: lavenderblush;
+    padding: 30px;
+    margin: 50px;
+    position: relative;
+    border-radius: 5px;
+}
+
+    .person img {
+        width: 120px;
+        border-radius: 60px;
+        box-shadow: 0 0 30px burlywood;
+        display: inline-block;
+    }
+
+.person h1 {
+    width: 100px;
+    padding: 20px;
+    margin-bottom: 200px;
+    margin: 0;
+    display: inline-block;
+    font-size: 24px;
+}
+
+.person p {
+    text-align: justify;
+}
+
+
+/*#loadImage {
+    position: fixed;
+    width: 400px;
+    height: 300px;
+    left: 50%;
+    top: 200px;
+    background-color: antiquewhite;
+    box-shadow: 0 0 100px black;
+    border-bottom: 15px solid lightgrey;
+    margin-left: -200px;
+    --display: none;
+}*/
+

@@ -1,0 +1,28 @@
+{
+    "images": [{
+        "id" : 1,
+        "url": "1.jpg",
+        "text": "“A journey is best measured in friends, rather than miles.” – Tim Cahill"
+    }, {
+        "id" : 2,
+        "url": "2.jpg",
+        "text": "“We travel, some of us forever, to seek other places, other lives, other souls.” – Anais Nin"
+    }, {
+        "id" : 3,
+        "url": "3.jpg",
+        "text": "“To awaken alone in a strange town is one of the pleasantest sensations in the world.” – Freya Stark"
+    }, {
+        "id" : 4,
+        "url": "4.jpg",
+        "text": "“A mind that is stretched by a new experience can never go back to its old dimensions.” – Oliver Wendell Holmes"
+    }, {
+        "id" : 5,
+        "url": "5.jpg",
+        "text": "“The world is a book, and those who do not travel read only one page.” – Saint Augustine"
+    }, {
+        "id" : 6,
+        "url": "6.jpg",
+        "text": "“Man cannot discover new oceans unless he has the courage to lose sight of the shore.” – Andre Gide"
+    }                     
+    ]
+}
